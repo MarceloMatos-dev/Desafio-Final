@@ -1,0 +1,17 @@
+<header>
+<a routerLink="/home" class="brand">
+<span>✚</span> Relief<span>Flow</span>
+</a>
+<button class="menu" (click)="open=!open">☰</button>
+<nav [class.open]="open">
+<a routerLink="/home" routerLinkActive="active">Início</a>
+<a routerLink="/pontos-apoio" routerLinkActive="active">Pontos de apoio</a>
+<a routerLink="/ongs" routerLinkActive="active">ONGs</a>
+<a routerLink="/comunidade" routerLinkActive="active">Comunidade</a>
+@if(auth.current()){<a routerLink="/perfil">Perfil</a>
+@if(auth.isAdmin()){<a routerLink="/dashboard">Dashboard</a>}
+<button class="link" (click)="auth.logout()">Sair</button>}
+@else{<a routerLink="/login">Entrar</a>
+<a class="signup" routerLink="/cadastro">Cadastre-se</a>}
+</nav>
+</header>

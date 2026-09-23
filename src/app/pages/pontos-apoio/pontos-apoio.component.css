@@ -1,0 +1,54 @@
+.page {
+    padding:60px 8%;
+    min-height:70vh
+}
+.eyebrow {
+    color:#15956b;
+    font-weight:800;
+    letter-spacing:2px;
+    font-size:12px
+}
+h1 {
+    font-size:42px
+}
+.cards {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-top:35px
+}
+article {
+    border:1px solid #dce8e4;
+    border-radius:16px;
+    padding:24px
+}
+label {
+    display:flex;
+    justify-content:space-between;
+    margin-top:14px
+}
+.bar {
+    height:7px;
+    background:#e8efed;
+    border-radius:5px
+}
+.bar i {
+    display:block;
+    height:100%;
+    background:#15956b;
+    border-radius:5px
+}
+@media(max-width:800px) {
+    .cards {
+        grid-template-columns:1fr
+    }
+}
+
+.donate { width:100%; margin-top:22px; padding:12px; border:0; border-radius:9px; background:#15956b; color:#fff; font-weight:800; cursor:pointer; }
+article small {
+    display: block;
+    color: #71807d;
+    margin: 7px 0 14px;
+    font-size: 12px;
+    line-height: 1.4;
+}

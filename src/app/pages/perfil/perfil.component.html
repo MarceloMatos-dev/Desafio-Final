@@ -1,0 +1,70 @@
+<main class="profile">
+  <section>
+    <span>MINHA CONTA</span>
+    <h1>{{ auth.current()?.name }}</h1>
+    <p>{{ auth.current()?.email }}</p>
+    <p>
+      <b>Tipo de conta:</b>
+      {{ auth.isAdmin() ? 'Administrador' : auth.isOng() ? 'ONG' : 'Doador' }}
+    </p>
+    @if (auth.isOng()) {
+      <p><b>CNPJ:</b> {{ formatCnpj(auth.current()?.cnpj) }}</p>
+    }
+  </section>
+
+  @if (auth.isOng()) {
+    <section class="goals-section">
+      <span>GESTÃO DA ONG</span>
+      <h2>Metas de arrecadação</h2>
+      <p>
+        Agora que sua ONG está cadastrada, informe quantas unidades precisa receber em cada categoria.
+        Você poderá atualizar essas metas posteriormente.
+      </p>
+
+      <form (ngSubmit)="saveGoals()" class="goals-form">
+        <label>
+          Água
+          <input name="goalWater" [(ngModel)]="goals.water" type="number" min="1" required>
+        </label>
+        <label>
+          Alimentos
+          <input name="goalFood" [(ngModel)]="goals.food" type="number" min="1" required>
+        </label>
+        <label>
+          Higiene
+          <input name="goalHygiene" [(ngModel)]="goals.hygiene" type="number" min="1" required>
+        </label>
+        <label>
+          Medicamentos
+          <input name="goalMedicine" [(ngModel)]="goals.medicine" type="number" min="1" required>
+        </label>
+        <label>
+          Roupas
+          <input name="goalClothes" [(ngModel)]="goals.clothes" type="number" min="1" required>
+        </label>
+
+        <button type="submit">Salvar metas</button>
+      </form>
+
+      @if (goalMessage) {
+        <div class="goal-message">{{ goalMessage }}</div>
+      }
+    </section>
+  }
+
+  @if (auth.isUser()) {
+    <section>
+      <h2>Minhas doações</h2>
+      @if (myDonations.length === 0) {
+        <p>Você ainda não registrou nenhuma doação.</p>
+      }
+      @for (donation of myDonations; track donation.id) {
+        <article>
+          <b>{{ donation.quantity }} × {{ donation.supplyLabel }}</b>
+          <span>{{ donation.centerName }}</span>
+          <small>{{ statusLabel(donation.status) }}</small>
+        </article>
+      }
+    </section>
+  }
+</main>

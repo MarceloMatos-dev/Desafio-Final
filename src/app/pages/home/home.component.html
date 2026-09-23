@@ -1,0 +1,86 @@
+<section class="carousel" aria-label="Campanhas ReliefFlow Salvador">
+@for(s of slides; track s.image; let i=$index){<div class="slide" [class.active]="i===current">
+<img [src]="s.image" [alt]="s.alt">
+<div class="shade">
+</div>
+<div class="copy">
+<span>RELIEFFLOW • SALVADOR, BAHIA</span>
+<h1>{{s.title}}
+</h1>
+<p>{{s.text}}
+</p>
+<div class="actions">
+<a routerLink="/pontos-apoio" class="primary">Ver necessidades</a>
+<a routerLink="/comunidade" class="secondary">Comunidade</a>
+</div>
+</div>
+</div>}
+<button class="nav prev" (click)="previous()" aria-label="Imagem anterior">‹</button>
+<button class="nav next" (click)="next()" aria-label="Próxima imagem">›</button>
+<div class="dots">
+@for(s of slides;track s.image;let i=$index){<button [class.active]="i===current" (click)="go(i)" [attr.aria-label]="'Ir para imagem '+(i+1)">
+</button>}
+</div>
+</section>
+<section class="numbers">
+<div>
+<b>6</b>
+<span>Pontos de apoio simulados</span>
+</div>
+<div>
+<b>1.240</b>
+<span>Itens recebidos</span>
+</div>
+<div>
+<b>126</b>
+<span>Voluntários</span>
+</div>
+<div>
+<b>Salvador</b>
+<span>Área da demonstração</span>
+</div>
+</section>
+<section class="section">
+<span class="eyebrow">PRIORIDADES EM SALVADOR</span>
+<h2>Onde sua ajuda é mais necessária</h2>
+<p class="sub">Dados demonstrativos por bairros de Salvador. O nível de estoque é classificado automaticamente.</p>
+<div class="grid">
+@for(c of centers;track c.id){<article>
+<div class="top">
+<span>📍 {{c.location}}
+</span>
+<b [class]="cls(avg(c))">{{label(avg(c))}}
+</b>
+</div>
+<h3>{{c.name}}
+</h3>
+<p>Maior necessidade: <strong>{{c.need}}
+</strong>
+</p>
+<div class="meter">
+<i [style.width.%]="avg(c)">
+</i>
+</div>
+<small>{{avg(c)}}% de abastecimento médio</small>
+</article>}
+</div>
+</section>
+<section class="community">
+<div>
+<span class="eyebrow">COMUNIDADE SOTEROPOLITANA</span>
+<h2>Uma rede para mobilizar Salvador</h2>
+<p>Voluntários e organizações podem divulgar campanhas, necessidades e resultados em bairros como Liberdade, Itapuã, Cajazeiras, Subúrbio Ferroviário e Centro Histórico.</p>
+<a routerLink="/comunidade" class="primary">Entrar na comunidade</a>
+</div>
+<div class="post">
+<span>✓ ORGANIZAÇÃO VERIFICADA</span>
+<h3>Campanha Salvador Solidário</h3>
+<p>Precisamos de água mineral, alimentos e itens de higiene para famílias atendidas nesta semana.</p>
+<small>📍 Liberdade, Salvador - BA</small>
+</div>
+</section>
+<section class="about">
+<span class="eyebrow">O PROBLEMA</span>
+<h2>Doar muito não basta. É preciso doar certo.</h2>
+<p>Em emergências e campanhas, um ponto pode receber excesso de roupas enquanto outro precisa de água ou alimentos. O ReliefFlow organiza essas necessidades e aproxima quem quer ajudar de quem precisa.</p>
+</section>

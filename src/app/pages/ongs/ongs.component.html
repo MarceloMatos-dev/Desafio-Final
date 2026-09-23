@@ -1,0 +1,21 @@
+<main class="page">
+  <span>ORGANIZAÇÕES PARCEIRAS</span>
+  <h1>ONGs e iniciativas de Salvador</h1>
+  <p>As metas abaixo fazem parte da simulação acadêmica do ReliefFlow.</p>
+  <a class="register" routerLink="/cadastro">Cadastrar minha ONG</a>
+
+  <div class="grid">
+    @for (ong of ongs; track ong.id) {
+      <article>
+        <div class="logo">🤝</div>
+        <div>
+          <b>{{ ong.verified ? '✓ DEMONSTRAÇÃO VERIFICADA' : 'CADASTRO DA COMUNIDADE' }}</b>
+          <h2>{{ ong.name }}</h2>
+          <p>{{ ong.description }}</p>
+          <small>📍 {{ ong.location }}</small>
+          <p><strong>Meta de alimentos:</strong> {{ ong.food.current }} / {{ ong.food.goal }} ({{ data.percentage(ong.food) }}%)</p>
+        </div>
+      </article>
+    }
+  </div>
+</main>

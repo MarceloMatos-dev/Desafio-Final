@@ -1,0 +1,48 @@
+<main class="page">
+  <span>PAINEL ADMINISTRATIVO</span>
+  <h1>Metas e doações das ONGs</h1>
+  <div class="stats">
+    <div><b>{{ centers.length }}</b>ONGs/pontos ativos</div>
+    <div><b>{{ critical }}</b>Alertas críticos</div>
+    <div><b>{{ average }}%</b>Progresso médio</div>
+    <div><b>{{ pending.length }}</b>Doações pendentes</div>
+  </div>
+
+  <section class="donations">
+    <h2>Doações aguardando recebimento</h2>
+    <p>A meta só é atualizada depois da confirmação.</p>
+    @if (pending.length === 0) { <p class="empty">Nenhuma doação pendente.</p> }
+    @for (donation of pending; track donation.id) {
+      <div class="donation-row">
+        <div>
+          <b>{{ donation.donorName }}</b>
+          <span>{{ donation.quantity }} × {{ donation.supplyLabel }} → {{ donation.centerName }}</span>
+        </div>
+        <div>
+          <button class="confirm" (click)="confirm(donation.id)">Confirmar recebimento</button>
+          <button class="reject" (click)="reject(donation.id)">Recusar</button>
+        </div>
+      </div>
+    }
+  </section>
+
+  <section>
+    <h2>Progresso por ONG</h2>
+    <p>Os valores mostram quantidade recebida, meta e porcentagem alcançada.</p>
+    <div class="goal-cards">
+      @for (center of centers; track center.id) {
+        <article class="goal-card">
+          <h3>{{ center.name }}</h3>
+          <small>📍 {{ center.location }}</small>
+          @for (item of supplyKeys; track item.key) {
+            <div class="goal-row">
+              <div><b>{{ item.label }}</b><span>{{ center[item.key].current }} / {{ center[item.key].goal }} · {{ data.percentage(center[item.key]) }}%</span></div>
+              <div class="progress"><i [style.width.%]="data.percentage(center[item.key])"></i></div>
+            </div>
+          }
+          <strong>{{ status(avg(center)) }} · média {{ avg(center) }}%</strong>
+        </article>
+      }
+    </div>
+  </section>
+</main>

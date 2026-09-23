@@ -1,0 +1,27 @@
+footer {
+    padding:35px 7%;
+    background:#102d2c;
+    color:#dce9e7;
+    display:flex;
+    justify-content:space-between;
+    gap:20px
+}
+b {
+    font-size:20px
+}
+p {
+    margin:8px 0
+}
+a {
+    color:#a9e4d0;
+    text-decoration:none
+}
+span {
+    display:block;
+    margin-top:8px
+}
+@media(max-width:650px) {
+    footer {
+        flex-direction:column
+    }
+}

@@ -1,0 +1,98 @@
+.profile {
+  min-height: 70vh;
+  padding: 55px 8%;
+  background: #f6faf9;
+}
+
+section {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  background: #fff;
+  padding: 28px;
+  border: 1px solid #dce8e4;
+  border-radius: 16px;
+}
+
+section > span {
+  color: #15956b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+h1, h2 {
+  color: #153f3d;
+}
+
+article {
+  padding: 15px 0;
+  border-bottom: 1px solid #edf1ef;
+  display: grid;
+  gap: 4px;
+}
+
+article span {
+  color: #5d6d69;
+}
+
+article small {
+  font-weight: 700;
+}
+
+.goals-section > p {
+  color: #667772;
+  line-height: 1.5;
+}
+
+.goals-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.goals-form label {
+  display: grid;
+  gap: 7px;
+  color: #173f3b;
+  font-weight: 800;
+}
+
+.goals-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #c9d9d4;
+  border-radius: 9px;
+  font: inherit;
+}
+
+.goals-form button {
+  grid-column: 1 / -1;
+  padding: 14px;
+  border: 0;
+  border-radius: 9px;
+  background: #15956b;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.goal-message {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 9px;
+  background: #eef9f5;
+  color: #176c52;
+  font-weight: 700;
+}
+
+@media (max-width: 620px) {
+  .profile {
+    padding: 30px 16px;
+  }
+
+  .goals-form {
+    grid-template-columns: 1fr;
+  }
+}

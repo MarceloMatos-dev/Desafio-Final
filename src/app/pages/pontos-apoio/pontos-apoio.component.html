@@ -1,0 +1,31 @@
+<main class="page">
+  <span class="eyebrow">REDE DE APOIO</span>
+  <h1>Metas de arrecadação em Salvador</h1>
+  <p>Cada barra compara o total já recebido com a meta definida por cada organização.</p>
+
+  <div class="cards">
+    @for (center of centers; track center.id) {
+      <article>
+        <div>📍 {{ center.location }}</div>
+        <h2>{{ center.name }}</h2>
+        <p>{{ center.description }}</p>
+        <p><b>Prioridade:</b> {{ center.need }}</p>
+
+        @for (item of supplies(center); track item.key) {
+          <label>
+            {{ item.name }}
+            <span>{{ item.resource.current }} / {{ item.resource.goal }} · {{ data.percentage(item.resource) }}%</span>
+          </label>
+          <div class="bar"><i [style.width.%]="data.percentage(item.resource)"></i></div>
+          <small>Faltam {{ data.remaining(item.resource) }} unidades para a meta.</small>
+        }
+
+        @if (auth.isUser()) {
+          <button class="donate" (click)="donate(center)">Quero doar para esta ONG</button>
+        } @else if (!auth.current()) {
+          <button class="donate" (click)="donate(center)">Entrar para doar</button>
+        }
+      </article>
+    }
+  </div>
+</main>

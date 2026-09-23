@@ -1,0 +1,37 @@
+<main class="page">
+<div class="head">
+<div>
+<span>COMUNIDADE RELIEFFLOW</span>
+<h1>Solidariedade também se compartilha.</h1>
+</div>
+</div>
+@if(auth.current()){<div class="composer">
+<textarea [(ngModel)]="text" placeholder="Compartilhe uma campanha, necessidade ou ação solidária...">
+</textarea>
+<button (click)="publish()" [disabled]="!text.trim()">Publicar</button>
+</div>}
+@else{<div class="notice">Entre ou cadastre-se para publicar. Você ainda pode acompanhar a comunidade.</div>}
+<section>
+@for(p of posts;track p.id){<article>
+<div class="avatar">{{p.author[0]}}
+</div>
+<div class="content">
+<b>{{p.author}}
+@if(p.verified){<i>✓</i>}
+</b>
+<small>{{p.created}}
+</small>
+<p>{{p.text}}
+</p>
+<div class="actions">
+<button (click)="like(p)">♡ {{p.likes}}
+</button>
+<button (click)="comment(p)">💬 {{p.comments.length}}
+</button>
+</div>
+@for(c of p.comments;track $index){<div class="comment">{{c}}
+</div>}
+</div>
+</article>}
+</section>
+</main>

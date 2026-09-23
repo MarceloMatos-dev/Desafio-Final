@@ -1,0 +1,75 @@
+.page {
+    padding:50px 6%;
+    min-height:70vh;
+    background:#f6faf9
+}
+.page>span {
+    color:#15956b;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px
+}
+h1 {
+    font-size:40px
+}
+.stats {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin:28px 0
+}
+.stats div {
+    background:white;
+    padding:22px;
+    border-radius:14px;
+    border:1px solid #dce8e4
+}
+.stats b {
+    font-size:28px;
+    display:block;
+    color:#153f3d
+}
+section {
+    background:#fff;
+    border-radius:16px;
+    padding:25px
+}
+.table {
+    overflow:auto
+}
+table {
+    width:100%;
+    border-collapse:collapse
+}
+th,td {
+    text-align:left;
+    padding:13px;
+    border-bottom:1px solid #edf1ef
+}
+input {
+    width:55px;
+    padding:7px;
+    border:1px solid #ccd8d4;
+    border-radius:6px
+}
+button {
+    margin-top:20px;
+    background:#15956b;
+    color:white;
+    border:0;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:700
+}
+section i {
+    margin-left:15px;
+    color:#15956b
+}
+@media(max-width:750px) {
+    .stats {
+        grid-template-columns:1fr 1fr
+    }
+}
+
+.donations { margin-bottom:22px; } .donation-row { display:flex; justify-content:space-between; gap:15px; align-items:center; padding:15px 0; border-bottom:1px solid #edf1ef; } .donation-row span { display:block; margin-top:4px; color:#657471; } .donation-row button { margin:0 0 0 8px; } .confirm { background:#15956b; } .reject { background:#9a4545; } .empty { color:#71807d; } @media(max-width:700px){.donation-row{align-items:flex-start;flex-direction:column}.donation-row button{margin:5px 5px 0 0}}
+.goal-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:20px}.goal-card{background:#fff;border:1px solid #e1ece8;border-radius:14px;padding:20px}.goal-card h3{margin:0 0 4px}.goal-card small{color:#71807d}.goal-row{margin:15px 0}.goal-row>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:13px}.progress{height:9px;background:#e6efec;border-radius:20px;overflow:hidden;margin-top:6px}.progress i{display:block;height:100%;background:#15956b;border-radius:20px}

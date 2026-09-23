@@ -1,0 +1,23 @@
+main {
+    max-width:850px;
+    margin:auto;
+    padding:65px 8%;
+    min-height:65vh
+}
+span {
+    color:#15956b;
+    font-weight:800;
+    letter-spacing:2px;
+    font-size:12px
+}
+h1 {
+    font-size:42px
+}
+h2 {
+    margin-top:30px;
+    color:#163f3d
+}
+p {
+    line-height:1.8;
+    color:#526562
+}

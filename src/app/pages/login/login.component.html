@@ -1,0 +1,17 @@
+<main class="auth">
+<form (ngSubmit)="go()">
+<div class="icon">✚</div>
+<h1>Bem-vindo de volta</h1>
+<p>Acesse sua conta ReliefFlow.</p>
+<label>E-mail<input name="email" [(ngModel)]="email" type="email" placeholder="seu@email.com" required>
+</label>
+<label>Senha<input name="password" [(ngModel)]="password" type="password" required>
+</label>
+@if(error){<div class="error">{{error}}
+</div>}
+<button>Entrar</button>
+<small>Não tem conta? <a routerLink="/cadastro">Cadastre-se</a>
+</small>
+<div class="demo">Demo admin: admin@reliefflow.org / admin123</div>
+</form>
+</main>

@@ -1,0 +1,88 @@
+<main class="auth">
+  <form (ngSubmit)="go()">
+    <h1>Crie sua conta</h1>
+    <p>Entre como doador ou cadastre uma ONG de Salvador.</p>
+
+    <div class="type-selector">
+      <button type="button" [class.active]="accountType === 'user'" (click)="accountType = 'user'">
+        👤 Doador
+      </button>
+      <button type="button" [class.active]="accountType === 'ong'" (click)="accountType = 'ong'">
+        🤝 ONG
+      </button>
+    </div>
+
+    <label>
+      Nome do responsável
+      <input name="name" [(ngModel)]="name" required>
+    </label>
+
+    <label>
+      E-mail
+      <input name="email" [(ngModel)]="email" type="email" required>
+    </label>
+
+    <label>
+      Senha
+      <input name="password" [(ngModel)]="password" type="password" minlength="6" required>
+    </label>
+
+    @if (accountType === 'ong') {
+      <div class="ong-fields">
+        <h2>Dados da ONG</h2>
+
+        <label>
+          Nome da ONG
+          <input name="ongName" [(ngModel)]="ongName" required>
+        </label>
+
+        <label>
+          CNPJ
+          <input
+            name="cnpj"
+            [(ngModel)]="cnpj"
+            (input)="onCnpjInput()"
+            inputmode="numeric"
+            maxlength="18"
+            placeholder="00.000.000/0000-00"
+            required>
+        </label>
+        <p class="field-hint">Cada CNPJ pode ser vinculado a apenas uma conta de ONG.</p>
+
+        <label>
+          Bairro em Salvador
+          <input name="neighborhood" [(ngModel)]="neighborhood" placeholder="Ex.: Liberdade" required>
+        </label>
+
+        <label>
+          Descrição
+          <textarea
+            name="description"
+            [(ngModel)]="description"
+            rows="3"
+            placeholder="Conte brevemente o trabalho da organização"></textarea>
+        </label>
+
+        <div class="after-register-info">
+          <strong>📊 Metas de arrecadação</strong>
+          <span>As metas de água, alimentos, higiene, medicamentos e roupas serão definidas depois que o cadastro da ONG for concluído.</span>
+        </div>
+      </div>
+    }
+
+    <label class="check">
+      <input name="lgpd" [(ngModel)]="lgpd" type="checkbox">
+      Li e concordo com a <a routerLink="/privacidade">Política de Privacidade e LGPD</a>.
+    </label>
+
+    @if (error) {
+      <div class="error">{{ error }}</div>
+    }
+
+    <button class="submit" [disabled]="!lgpd">
+      {{ accountType === 'ong' ? 'Cadastrar ONG' : 'Criar conta' }}
+    </button>
+
+    <small>Já possui conta? <a routerLink="/login">Entrar</a></small>
+  </form>
+</main>

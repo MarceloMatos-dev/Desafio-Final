@@ -1,0 +1,48 @@
+<main class="donation-page">
+  @if (center) {
+    <section class="donation-card">
+      <span>DOAÇÃO SOLIDÁRIA</span>
+      <h1>{{ center.name }}</h1>
+      <p>📍 {{ center.location }}</p>
+
+      <div class="needs">
+        @for (item of supplies; track item.key) {
+          <div>
+            <b>{{ item.label }}</b>
+            <small>{{ resource(item.key).current }} / {{ resource(item.key).goal }} unidades · {{ data.percentage(resource(item.key)) }}%</small>
+          </div>
+        }
+      </div>
+
+      @if (!success) {
+        <form (ngSubmit)="submit()">
+          <label>O que você deseja doar?</label>
+          <select [(ngModel)]="supply" name="supply">
+            @for (item of supplies; track item.key) {
+              <option [value]="item.key">{{ item.label }}</option>
+            }
+          </select>
+
+          <label>Quantidade de unidades/itens</label>
+          <input [(ngModel)]="quantity" name="quantity" type="number" min="1" [max]="maxDonation()" required>
+
+          <div class="impact">
+            <b>Impacto da sua doação</b>
+            <p>Progresso atual: {{ data.percentage(resource(supply)) }}%</p>
+            <p>Após confirmação: <strong>{{ projected(supply) }}%</strong></p>
+            <p>Meta: {{ resource(supply).goal }} unidades · faltam {{ data.remaining(resource(supply)) }}.</p>
+          </div>
+
+          <button type="submit" [disabled]="maxDonation() === 0">Confirmar intenção de doação</button>
+        </form>
+        <p class="note">A porcentagem oficial aumenta somente quando o administrador confirma o recebimento.</p>
+      } @else {
+        <div class="success">
+          <h2>✓ Doação registrada!</h2>
+          <p>Quando o administrador confirmar o recebimento, esta categoria chegará a aproximadamente <b>{{ projectedPercentage }}%</b> da meta.</p>
+          <a routerLink="/perfil">Ver minhas doações</a>
+        </div>
+      }
+    </section>
+  }
+</main>
