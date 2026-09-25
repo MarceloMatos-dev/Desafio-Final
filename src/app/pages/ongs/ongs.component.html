@@ -12,7 +12,7 @@
           <b>{{ ong.verified ? '✓ DEMONSTRAÇÃO VERIFICADA' : 'CADASTRO DA COMUNIDADE' }}</b>
           <h2>{{ ong.name }}</h2>
           <p>{{ ong.description }}</p>
-          <small>📍 {{ ong.location }}</small>
+          <small> {{ ong.location }}</small>
           <p><strong>Meta de alimentos:</strong> {{ ong.food.current }} / {{ ong.food.goal }} ({{ data.percentage(ong.food) }}%)</p>
         </div>
       </article>

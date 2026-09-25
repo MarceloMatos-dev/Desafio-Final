@@ -33,7 +33,7 @@
       @for (center of centers; track center.id) {
         <article class="goal-card">
           <h3>{{ center.name }}</h3>
-          <small>📍 {{ center.location }}</small>
+          <small> {{ center.location }}</small>
           @for (item of supplyKeys; track item.key) {
             <div class="goal-row">
               <div><b>{{ item.label }}</b><span>{{ center[item.key].current }} / {{ center[item.key].goal }} · {{ data.percentage(center[item.key]) }}%</span></div>
